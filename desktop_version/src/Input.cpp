@@ -29,9 +29,9 @@
 static void updatebuttonmappings(int bind)
 {
     for (
-        SDL_GameControllerButton i = SDL_CONTROLLER_BUTTON_A;
-        i < SDL_CONTROLLER_BUTTON_DPAD_UP;
-        i = (SDL_GameControllerButton) (i + 1)
+        SDL_GamepadButton i = SDL_GAMEPAD_BUTTON_SOUTH;
+        i < SDL_GAMEPAD_BUTTON_DPAD_UP;
+        i = (SDL_GamepadButton) (i + 1)
     ) {
         if (key.isDown(i))
         {
@@ -41,7 +41,7 @@ static void updatebuttonmappings(int bind)
                 game.gpmenu_lastbutton = i;
 
                 // Is this button already in the list for this action?
-                std::vector<SDL_GameControllerButton>* vec = NULL;
+                std::vector<SDL_GamepadButton>* vec = NULL;
                 switch (bind)
                 {
                 case 1: vec = &game.controllerButton_flip; break;
@@ -3045,7 +3045,7 @@ void gameinput(void)
         game.menupage = 30; // Pause screen
     }
 
-    if (game.deathseq == -1 && (key.isDown(SDLK_r) || key.isDown(game.controllerButton_restart)) && !game.nodeathmode)// && map.custommode) //Have fun glitchrunners!
+    if (game.deathseq == -1 && (key.isDown(SDLK_R) || key.isDown(game.controllerButton_restart)) && !game.nodeathmode)// && map.custommode) //Have fun glitchrunners!
     {
         game.deathseq = 30;
     }
